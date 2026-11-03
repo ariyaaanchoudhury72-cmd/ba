@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bhagad News // Anonymous Confessions</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --matrix-green: #00ff66;
+      --matrix-glow: rgba(0, 255, 102, 0.4);
+      --matrix-dark-green: #003b15;
+      --matrix-bg: #050b07;
+      --matrix-panel: rgba(8, 20, 12, 0.85);
+      --matrix-border: #00ff6644;
+      --matrix-text: #c8ffd4;
+      --matrix-muted: #528c61;
+      --danger: #ff3344;
+      --font-mono: 'Fira Code', 'Courier New', monospace;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--matrix-bg);
+      color: var(--matrix-text);
+      font-family: var(--font-mono);
+      min-height: 100vh;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    /* Matrix Rain Canvas */
+    #matrix-canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      z-index: 0;
+      opacity: 0.18;
+      pointer-events: none;
+    }
+
+    .container {
+      position: relative;
+      z-index: 1;
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 2.5rem 1.25rem;
+    }
+
+    /* Terminal Window */
+    .terminal-box {
+      background: var(--matrix-panel);
+      border: 1px solid var(--matrix-border);
+      border-radius: 8px;
+      box-shadow: 0 0 25px rgba(0, 255, 102, 0.12), inset 0 0 15px rgba(0, 255, 102, 0.05);
+      backdrop-filter: blur(8px);
+      margin-bottom: 2rem;
+      overflow: hidden;
+    }
+
+    .terminal-header {
+      background: rgba(0, 255, 102, 0.08);
+      border-bottom: 1px solid var(--matrix-border);
+      padding: 0.75rem 1.25rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.85rem;
+      color: var(--matrix-green);
+    }
+
+    .terminal-dots {
+      display: flex;
+      gap: 6px;
+    }
+
+    .terminal-dots span {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      display: inline-block;
+    }
+
+    .terminal-dots span:nth-child(1) { background: #ff5f56; }
+    .terminal-dots span:nth-child(2) { background: #ffbd2e; }
+    .terminal-dots span:nth-child(3) { background: #27c93f; }
+
+    .terminal-body {
+      padding: 1.5rem;
+    }
+
+    /* Header Brand */
+    header {
+      text-align: center;
+      margin-bottom: 2.5rem;
+    }
+
+    .brand-title {
+      font-size: clamp(2rem, 6vw, 3.2rem);
+      font-weight: 700;
+      color: var(--matrix-green);
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      text-shadow: 0 0 12px var(--matrix-glow);
+    }
+
+    .brand-subtitle {
+      color: var(--matrix-muted);
+      margin-top: 0.5rem;
